@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonGuru\RepositoryGenerator\Exceptions;
+namespace JasonGuru\LaravelMakeRepository\Exceptions;
 
 use Exception;
 use Throwable;
