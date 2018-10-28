@@ -1,0 +1,32 @@
+{
+    "name": "Jason-Guru/repository-generator",
+    "description": "A simple package to create a make:repository command for Laravel 5+",
+    "type": "project",
+    "require": {
+        "illuminate/console": "^5.7",
+        "illuminate/database": "5.7",
+        "illuminate/support": "5.7",
+        "php": ">=5.4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "G Jason Sharma",
+            "email": "g.jason.sharma@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JasonGuru\\RepositoryGenerator\\RepositoryServiceProvider"
+            ]
+        }
+    },
+    
+    "autoload": {
+        "psr-4": {
+            "JasonGuru\\RepositoryGenerator\\": "src/"
+        }
+    }
+}
