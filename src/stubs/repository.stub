@@ -1,0 +1,21 @@
+<?php
+
+namespace DummyNamespace;
+
+use JasonGuru\RepositoryGenerator\Repository\BaseRepository;
+//use the model here
+
+/**
+ * Class DummyClass.
+ */
+class DummyClass extends BaseRepository
+{
+    /**
+     * @return string
+     *  Return the model
+     */
+    public function model()
+    {
+        //return model name
+    }
+}
