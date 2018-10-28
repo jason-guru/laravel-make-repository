@@ -4,7 +4,7 @@ A simple package to add `php artisan make:repository` command to Laravel 5+
 ## Installation
 Require the package with composer using the following command:
 
-`composer require jason-guru/laravel-make-repository`
+`composer require jason-guru/laravel-make-repository --dev`
 
 Or add the following to your composer.json's require section and `composer update`
 
