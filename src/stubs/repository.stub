@@ -16,6 +16,6 @@ class DummyClass extends BaseRepository
      */
     public function model()
     {
-        //return YourModel::class
+        //return YourModel::class;
     }
 }
