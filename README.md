@@ -2,7 +2,7 @@
 [![Total Downloads](https://poser.pugx.org/jason-guru/laravel-make-repository/downloads)](https://packagist.org/packages/jason-guru/laravel-make-repository)
 [![Latest Unstable Version](https://poser.pugx.org/jason-guru/laravel-make-repository/v/unstable)](//packagist.org/packages/jason-guru/laravel-make-repository)
 [![License](https://poser.pugx.org/jason-guru/laravel-make-repository/license)](https://packagist.org/packages/jason-guru/laravel-make-repository)
-# laravel-make-repository
+# Laravel 5+ Artisan Make:Repository
 A simple package to add `php artisan make:repository` command to Laravel 5+
 
 ## Installation
