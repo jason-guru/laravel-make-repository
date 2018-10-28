@@ -2,8 +2,8 @@
 
 namespace DummyNamespace;
 
-use JasonGuru\RepositoryGenerator\Repository\BaseRepository;
-//use the model here
+use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
+//use Your Model
 
 /**
  * Class DummyClass.
@@ -16,6 +16,6 @@ class DummyClass extends BaseRepository
      */
     public function model()
     {
-        //return model name
+        //return YourModel::class
     }
 }
