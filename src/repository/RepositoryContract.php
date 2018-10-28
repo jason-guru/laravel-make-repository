@@ -1,6 +1,6 @@
 <?php
 
-namespace JasonGuru\RepositoryGenerator\Repository;
+namespace JasonGuru\LaravelMakeRepository\Repository;
 
 /**
  * Interface RepositoryContract.
