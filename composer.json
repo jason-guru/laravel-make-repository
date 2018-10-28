@@ -3,9 +3,9 @@
     "description": "A simple package to create a make:repository command for Laravel 5+",
     "type": "library",
     "require": {
-        "illuminate/console": "^5.7",
-        "illuminate/database": "5.7",
-        "illuminate/support": "5.7",
+        "illuminate/console": "~5.0",
+        "illuminate/database": "~5.0",
+        "illuminate/support": "~5.0",
         "php": ">=5.4.0"
     },
     "license": "MIT",
