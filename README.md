@@ -34,12 +34,15 @@ Example:
 ```
 <?php
 
-namespace App\Repositories;
+namespace DummyNamespace;
 
-use JasonGuru\RepositoryGenerator\Repository\BaseRepository;
-use App\Models\User;
+use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
+//use Your Model
 
-class UserRepository extends BaseRepository
+/**
+ * Class DummyClass.
+ */
+class DummyClass extends BaseRepository
 {
     /**
      * @return string
@@ -47,7 +50,7 @@ class UserRepository extends BaseRepository
      */
     public function model()
     {
-        return User::class;
+        //return YourModel::class
     }
 }
 
