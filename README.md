@@ -10,7 +10,7 @@ Require the package with composer using the following command:
 
 `composer require jason-guru/laravel-make-repository --dev`
 
-Or add the following to your composer.json's require section and `composer update`
+Or add the following to your composer.json's require-dev section and `composer update`
 
 ```json
 "require-dev": {
