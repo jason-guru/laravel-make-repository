@@ -14,7 +14,7 @@ Or add the following to your composer.json's require-dev section and `composer u
 
 ```json
 "require-dev": {
-          "jason-guru/laravel-make-repository": "dev-master"
+          "jason-guru/laravel-make-repository": "^0.0.1"
 }
 ```
 ## Usage
