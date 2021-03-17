@@ -5,6 +5,8 @@ namespace JasonGuru\LaravelMakeRepository\Repository;
 use JasonGuru\LaravelMakeRepository\Exceptions\GeneralException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Closure;
+
 
 /**
  * Class BaseRepository.
@@ -52,6 +54,13 @@ abstract class BaseRepository implements RepositoryContract
      * @var array
      */
     protected $whereIns = [];
+
+     /**
+     * Array of one or more where has clause parameters.
+     *
+     * @var array
+     */
+    protected $whereHasQueries = [];
 
     /**
      * Array of one or more ORDER BY column/value pairs.
@@ -370,6 +379,21 @@ abstract class BaseRepository implements RepositoryContract
     }
 
     /**
+     * Add a simple where has clause to the query.
+     *
+     * @param string $relation
+     * @param \Closure  $whereHasQuery
+     *
+     * @return $this
+     */
+    public function whereHas($relation, Closure $whereHasQuery = null)
+    {
+        $this->whereHasQueries[] = compact('relation', 'whereHasQuery');
+
+        return $this;
+    }
+
+    /**
      * Set Eloquent relationships to eager load.
      *
      * @param $relations
@@ -432,6 +456,10 @@ abstract class BaseRepository implements RepositoryContract
             $this->query->orderBy($orders['column'], $orders['direction']);
         }
 
+        foreach ($this->whereHasQueries as $whereHas) {
+            $this->query->whereHas($whereHas['relation'], $whereHas['whereHasQuery']);
+        }
+
         if (isset($this->take) and ! is_null($this->take)) {
             $this->query->take($this->take);
         }
@@ -462,6 +490,7 @@ abstract class BaseRepository implements RepositoryContract
     {
         $this->wheres = [];
         $this->whereIns = [];
+        $this->whereHasQueries = [];
         $this->scopes = [];
         $this->take = null;
 
