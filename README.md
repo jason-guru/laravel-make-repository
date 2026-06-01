@@ -19,7 +19,7 @@ Or add it to your `composer.json` `require-dev` section and run `composer update
 
 ```json
 "require-dev": {
-    "jason-guru/laravel-make-repository": "^0.0.3"
+    "jason-guru/laravel-make-repository": "^1.0"
 }
 ```
 
