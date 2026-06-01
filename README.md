@@ -1,66 +1,110 @@
+# Laravel PHP Artisan Make:Repository
+
 [![Latest Stable Version](https://poser.pugx.org/jason-guru/laravel-make-repository/version)](https://packagist.org/packages/jason-guru/laravel-make-repository)
 [![Total Downloads](https://poser.pugx.org/jason-guru/laravel-make-repository/downloads)](https://packagist.org/packages/jason-guru/laravel-make-repository)
-[![Latest Unstable Version](https://poser.pugx.org/jason-guru/laravel-make-repository/v/unstable)](//packagist.org/packages/jason-guru/laravel-make-repository)
+[![Latest Unstable Version](https://poser.pugx.org/jason-guru/laravel-make-repository/v/unstable)](https://packagist.org/packages/jason-guru/laravel-make-repository)
 [![License](https://poser.pugx.org/jason-guru/laravel-make-repository/license)](https://packagist.org/packages/jason-guru/laravel-make-repository)
-# Laravel PHP Artisan Make:Repository
-A simple package for addding `php artisan make:repository` command to Laravel 5 and above
+
+A simple package that adds a `php artisan make:repository` command to Laravel 10, 11, 12, and 13.
 
 ## Installation
-Require the package with composer using the following command:
 
-`composer require jason-guru/laravel-make-repository --dev`
+Require the package with composer:
 
-Or add the following to your composer.json's require-dev section and `composer update`
+```bash
+composer require jason-guru/laravel-make-repository --dev
+```
+
+Or add it to your `composer.json` `require-dev` section and run `composer update`:
 
 ```json
 "require-dev": {
-          "jason-guru/laravel-make-repository": "^0.0.2"
+    "jason-guru/laravel-make-repository": "^0.0.3"
 }
 ```
+
 ## Usage
-`php artisan make:repository your-repository-name`
+
+```bash
+php artisan make:repository your-repository-name
+```
 
 Example:
-```
+
+```bash
 php artisan make:repository UserRepository
 ```
-or
+
+Or with a sub-namespace:
+
+```bash
+php artisan make:repository Backend\\UserRepository
 ```
-php artisan make:repository Backend\UserRepository
+
+Wire up a model in one shot with the `--model` (`-m`) option — the generated repository imports the model and returns it from `model()`:
+
+```bash
+php artisan make:repository UserRepository --model=User
 ```
 
-The above will create a repositories directory inside the app directory.
+The above commands create a `Repositories` directory inside the `app` directory.
 
-Once the repository is generated add your model class and return it in the model function,
+## Generated files
 
-Example:
+By default, `make:repository UserRepository` creates **two** files:
 
+- `app/Repositories/UserRepository.php` — the concrete class
+- `app/Repositories/Contracts/UserRepositoryInterface.php` — the paired interface (extends `RepositoryContract`)
+
+The concrete is declared `implements UserRepositoryInterface`, and the package's service provider auto-binds the interface to the concrete in the container — so you can type-hint the interface anywhere:
+
+```php
+public function __construct(private UserRepositoryInterface $users) {}
 ```
+
+To skip the interface for a single command, pass `--no-interface`:
+
+```bash
+php artisan make:repository UserRepository --no-interface
+```
+
+## Configuration
+
+Publish the config to customize behavior:
+
+```bash
+php artisan vendor:publish --tag=repository-config
+```
+
+That creates `config/repository.php`:
+
+```php
+return [
+    'path'           => 'app/Repositories',
+    'namespace'      => 'App\\Repositories',
+    'with_interface' => true,  // generate a paired interface
+    'bind'           => true,  // auto-bind interface => concrete
+];
+```
+
+## Example output
+
+A repository generated with `--model=User` looks like this:
+
+```php
 <?php
 
-namespace DummyNamespace;
+namespace App\Repositories;
 
+use App\Models\User;
+use App\Repositories\Contracts\UserRepositoryInterface;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
-//use Your Model
 
-/**
- * Class DummyClass.
- */
-class DummyClass extends BaseRepository
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
-    /**
-     * @return string
-     *  Return the model
-     */
-    public function model()
+    public function model(): string
     {
-        //return YourModel::class
+        return User::class;
     }
 }
-
 ```
-
-<a href="https://www.buymeacoffee.com/fMy8dmHGl" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
-
-

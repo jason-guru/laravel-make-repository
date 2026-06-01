@@ -1,0 +1,9 @@
+<?php
+
+namespace DummyNamespace;
+
+use JasonGuru\LaravelMakeRepository\Repository\RepositoryContract;
+
+interface DummyClass extends RepositoryContract
+{
+}

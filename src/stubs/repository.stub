@@ -3,19 +3,15 @@
 namespace DummyNamespace;
 
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
-//use Your Model
+{{ modelImport }}{{ interfaceImport }}
 
-/**
- * Class DummyClass.
- */
-class DummyClass extends BaseRepository
+class DummyClass extends BaseRepository{{ implementsClause }}
 {
     /**
-     * @return string
-     *  Return the model
+     * Return the fully-qualified model class name.
      */
-    public function model()
+    public function model(): string
     {
-        //return YourModel::class;
+        {{ modelReturn }}
     }
 }
